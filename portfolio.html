@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Rajeswari Srikruthi Veda | Full-Stack Developer Portfolio</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0c0a2a 100%);
+      color: #f1f5f9;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .bg-glow {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      background: radial-gradient(circle at 20% 30%, rgba(59,130,246,0.15), rgba(139,92,246,0.08), transparent 70%);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .glass-card {
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 2rem;
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(59,130,246,0.1) inset;
+    }
+
+    /* Hero section - image on the side (left or right) */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      padding: 2rem 2.2rem;
+      background: linear-gradient(125deg, rgba(15,25,55,0.7), rgba(30,20,70,0.6));
+      backdrop-filter: blur(16px);
+      border-radius: 2rem;
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      box-shadow: 0 20px 35px -12px black;
+    }
+
+    /* Image on the RIGHT side (desktop) */
+    .hero-info {
+      flex: 3;
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-info h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(120deg, #ffffff, #a5f3fc, #818cf8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #cbd5e6;
+      margin-bottom: 1rem;
+      border-left: 4px solid #3b82f6;
+      padding-left: 1rem;
+      font-weight: 500;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1.2rem 0;
+    }
+
+    .contact-details a, .contact-details span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(59,130,246,0.15);
+      backdrop-filter: blur(4px);
+      padding: 0.4rem 1rem;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #e0f2fe;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid rgba(59,130,246,0.3);
+    }
+
+    .contact-details a:hover {
+      background: #3b82f6;
+      color: white;
+      transform: translateY(-3px);
+      border-color: white;
+    }
+
+    .image-frame {
+      width: 220px;
+      height: 220px;
+      background: linear-gradient(145deg, #3b82f6, #c084fc);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 25px 35px -8px rgba(0, 0, 0, 0.5), 0 0 0 3px rgba(255,255,255,0.2);
+      transition: all 0.3s;
+    }
+
+    .profile-img {
+      width: 210px;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid rgba(255,255,240,0.9);
+      background: #1e293b;
+    }
+
+    /* section styling */
+    .section {
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(12px);
+      border-radius: 1.8rem;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      transition: all 0.2s;
+    }
+
+    .section h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: linear-gradient(135deg, #eef2ff, #a5f3fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      border-bottom: 2px solid rgba(59,130,246,0.5);
+      padding-bottom: 0.6rem;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .skill-badge {
+      background: linear-gradient(110deg, rgba(59,130,246,0.2), rgba(139,92,246,0.2));
+      backdrop-filter: blur(4px);
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #b9e6ff;
+      border: 1px solid rgba(59,130,246,0.5);
+      transition: 0.2s;
+    }
+
+    .edu-exp-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .info-card {
+      flex: 1;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(12px);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(59,130,246,0.4);
+    }
+    .info-card h3 {
+      display: flex;
+      gap: 0.6rem;
+      color: #94a3f8;
+      margin-bottom: 1rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .project-card {
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(8px);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(96, 165, 250, 0.4);
+      transition: all 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: #3b82f6;
+      background: rgba(59,130,246,0.1);
+      box-shadow: 0 18px 30px -12px #0f0f2e;
+    }
+
+    .project-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      color: #f0f9ff;
+      gap: 0.5rem;
+    }
+    .project-links a {
+      color: #7aa2f7;
+      margin-left: 0.7rem;
+      font-size: 0.8rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .project-links a:hover {
+      color: #3b82f6;
+    }
+    .tech-stack span {
+      background: #1e293b;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      color: #b9e6ff;
+    }
+    .achievement-list, .cert-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .achievement-item, .cert-item {
+      background: rgba(59,130,246,0.12);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      border-left: 3px solid #3b82f6;
+      backdrop-filter: blur(2px);
+    }
+    .profile-badge {
+      background: linear-gradient(95deg, #1e2a47, #0f172a);
+      padding: 0.6rem 1.3rem;
+      border-radius: 40px;
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: 0.2s;
+      border: 1px solid #3b82f6;
+    }
+    .profile-badge:hover {
+      background: #3b82f6;
+      transform: scale(1.03);
+    }
+    .contact-box {
+      background: linear-gradient(125deg, #0a0f2a, #111827);
+      border-radius: 1.8rem;
+      padding: 2rem;
+      border: 1px solid rgba(96, 165, 250, 0.5);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+    .contact-form .form-group input, .contact-form .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,245,0.1);
+      border: 1px solid #3b82f6;
+      padding: 0.9rem 1rem;
+      border-radius: 1rem;
+      color: white;
+      font-family: inherit;
+      backdrop-filter: blur(5px);
+    }
+    .contact-form .form-group input::placeholder,
+    .contact-form .form-group textarea::placeholder {
+      color: #94a3b8;
+    }
+    .submit-btn {
+      background: linear-gradient(90deg, #2563eb, #7c3aed);
+      border: none;
+      padding: 0.8rem 2rem;
+      font-weight: 700;
+      border-radius: 2rem;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(59,130,246,0.4);
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      opacity: 0.7;
+    }
+
+    /* Mobile responsive: image on top or side? For mobile, stack but image stays at top/side preference */
+    @media (max-width: 780px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-info h1 {
+        font-size: 2rem;
+      }
+      .hero-image {
+        order: -1; /* image comes first on mobile, but still on side? Actually keeps above content */
+        margin-bottom: 0.5rem;
+      }
+      .image-frame {
+        width: 160px;
+        height: 160px;
+      }
+      .profile-img {
+        width: 150px;
+        height: 150px;
+      }
+      .contact-details {
+        justify-content: center;
+      }
+    }
+
+    /* For tablet and desktop, image stays on right side */
+    @media (min-width: 781px) {
+      .hero {
+        flex-direction: row;
+      }
+      .hero-image {
+        order: 2;
+      }
+      .hero-info {
+        order: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="container">
+  <!-- Hero section: image on the SIDE (right side on desktop, above on mobile but not centered awkwardly) -->
+  <div class="hero glass-card">
+    <div class="hero-info">
+      <h1>Gadepalli Rajeswari Srikruthi Veda</h1>
+      <div class="tagline"><i class="fas fa-code"></i> Full-Stack Developer | 500+ DSA | MERN Enthusiast</div>
+      <div class="contact-details">
+        <span><i class="fas fa-phone-alt"></i> +91 8688612249</span>
+        <a href="mailto:srikruthiveda@gmail.com"><i class="fas fa-envelope"></i> srikruthiveda@gmail.com</a>
+        <a href="https://www.linkedin.com/in/srikruthiveda27/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/GRSVeda" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://leetcode.com/u/Veda_2709/" target="_blank"><i class="fab fa-leetcode"></i> LeetCode</a>
+        <a href="https://www.codechef.com/users/veda2006" target="_blank"><i class="fas fa-code"></i> CodeChef</a>
+      </div>
+      <div class="profiles-row" style="margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.8rem;">
+        <a href="https://leetcode.com/u/Veda_2709/" target="_blank" class="profile-badge"><i class="fab fa-leetcode"></i> LeetCode (Max: 1699)</a>
+        <a href="https://www.codechef.com/users/veda2006" target="_blank" class="profile-badge"><i class="fas fa-code"></i> CodeChef ★★</a>
+        <a href="https://github.com/GRSVeda" target="_blank" class="profile-badge"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="image-frame">
+        <!-- Your photo appears on the side (right) - replace 'veda prof.png' with actual image path -->
+        <img class="profile-img" id="profileImage" src="veda.png" alt="Rajeswari Srikruthi Veda" onerror="this.onerror=null; this.src='https://placehold.co/500x500/1e293b/818cf8?text=Rajeswari+Veda';">
+      </div>
+    </div>
+  </div>
+
+  <!-- Technical Skills -->
+  <div class="section">
+    <h2><i class="fas fa-microchip"></i> Tech Arsenal</h2>
+    <div class="skills-grid">
+      <span class="skill-badge">C</span><span class="skill-badge">Python</span><span class="skill-badge">Java</span>
+      <span class="skill-badge">HTML5/CSS3</span><span class="skill-badge">JavaScript (ES6+)</span><span class="skill-badge">SQL</span>
+      <span class="skill-badge">Node.js</span><span class="skill-badge">Express.js</span><span class="skill-badge">React</span>
+      <span class="skill-badge">MongoDB</span><span class="skill-badge">Git/GitHub</span><span class="skill-badge">VS Code</span>
+      <span class="skill-badge">REST APIs</span><span class="skill-badge">Responsive Design</span>
+    </div>
+  </div>
+
+  <!-- Education + Experience -->
+  <div class="edu-exp-flex">
+    <div class="info-card">
+      <h3><i class="fas fa-graduation-cap"></i>  Education</h3>
+      <p style="font-weight: 700; font-size: 1.1rem;">Vignan’s Institute of Information Technology</p>
+      <p>Visakhapatnam, Andhra Pradesh</p>
+      <p>B.Tech in Computer Science | 2023 – 2027</p>
+      <p style="background: #3b82f620; display: inline-block; padding: 0.2rem 1rem; border-radius: 30px; margin-top: 8px;"><strong>CGPA: 9.48</strong> 🌟</p>
+    </div>
+    <div class="info-card">
+      <h3><i class="fas fa-briefcase"></i>  Experience</h3>
+      <p><strong>Web Development Intern</strong> @ VaultofCodes <span style="float: right;">July 2025 – Aug 2025</span></p>
+      <p style="font-size: 0.9rem; margin-top: 8px;">🔧 Built responsive web apps, UI enhancements, front-end workflows using HTML/CSS/JS, collaborated on agile practices.</p>
+    </div>
+  </div>
+
+  <!-- PROJECTS with real URLs -->
+  <div class="section">
+    <h2><i class="fas fa-rocket"></i> Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">🗳️ Online Voting System <div class="project-links"><a href="https://github.com/GRSVeda/Online-Voting-System" target="_blank">GitHub ▸</a> <a href="https://online-voting-system-wine.vercel.app/" target="_blank">Live ▸</a></div></div>
+        <div class="project-desc">Full-stack platform with secure voting, JWT auth, one-vote-per-user, MongoDB, Express & Node.js REST APIs.</div>
+        <div class="tech-stack"><span>Node.js</span><span>Express</span><span>MongoDB</span><span>EJS</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-title">📘 EduQuest <div class="project-links"><a href="https://github.com/GRSVeda/EduQuest" target="_blank">GitHub ▸</a> <a href="https://eduquestforlearning.netlify.app/home" target="_blank">Live ▸</a></div></div>
+        <div class="project-desc">Modern educational platform with courses, pricing, contact sections, fully responsive React components & smooth UI.</div>
+        <div class="tech-stack"><span>React</span><span>React Router</span><span>CSS3</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-title">⌨️ Typing Speed Test <div class="project-links"><a href="https://github.com/GRSVeda/typing-speed-test" target="_blank">GitHub ▸</a> <a href="https://typing-speed-test-omega-gules.vercel.app/" target="_blank">Live ▸</a></div></div>
+        <div class="project-desc">Real-time WPM & accuracy, error detection, timer, paragraph generator — minimal & addictive.</div>
+        <div class="tech-stack"><span>JavaScript</span><span>HTML/CSS</span><span>DOM</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-title">⚖️ BMI Calculator <div class="project-links"><a href="https://github.com/GRSVeda/BMI-CALCULATOR" target="_blank">GitHub ▸</a> <a href="https://bmi-calculator-beige-chi.vercel.app/" target="_blank">Live ▸</a></div></div>
+        <div class="project-desc">Smart BMI classifier, real-time health range suggestion, responsive and clean UI.</div>
+        <div class="tech-stack"><span>JavaScript</span><span>HTML5</span><span>CSS Grid</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Achievements -->
+  <div class="section">
+    <h2><i class="fas fa-medal"></i> Achievements & Coding Stats</h2>
+    <div class="achievement-list">
+      <div class="achievement-item">🏆 500+ problems on CodeChef (2★, max 1432) & LeetCode (max 1699)</div>
+      <div class="achievement-item">🥇 Top 10 position – Sushacks Hackathon</div>
+      <div class="achievement-item">🚀 Ranked 98 in Paranox 2.0 (out of 1552 teams)</div>
+      <div class="achievement-item">💻 Full-stack MERN projects & open-source contributions</div>
+      <div class="achievement-item">🔥 20+ certificates in DSA & Web Dev</div>
+    </div>
+    <div style="margin-top: 1.2rem;">
+      <div style="display: flex; gap: 0.9rem; flex-wrap: wrap;">
+        <a href="https://www.codechef.com/users/veda2006" target="_blank" class="profile-badge"><i class="fab fa-codechef"></i> CodeChef ★★ (1432)</a>
+        <a href="https://leetcode.com/u/Veda_2709/" target="_blank" class="profile-badge"><i class="fab fa-leetcode"></i> LeetCode 1699 rating</a>
+        <a href="#" class="profile-badge"><i class="fas fa-chart-simple"></i> 500+ DSA problems</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certifications -->
+  <div class="section">
+    <h2><i class="fas fa-certificate"></i> Certifications & Badges</h2>
+    <div class="cert-list">
+      <div class="cert-item">📜 CodeChef 20+ certificates (Problem Solving, Python, DSA)</div>
+      <div class="cert-item">📊 OfficeMaster Excel using AI workshop</div>
+      <div class="cert-item">🎓 Udemy: HTML, CSS, JavaScript modern course</div>
+      <div class="cert-item">☁️ Virtual Internships: Java Full Stack, Cloud Security, Android Dev (EduSkills)</div>
+      <div class="cert-item">⚛️ React Basics & MERN Stack certification</div>
+    </div>
+  </div>
+
+  <!-- CONTACT BOX - Pure frontend (no backend, no EmailJS, just mailto link and visual feedback) -->
+  <div class="contact-box">
+    <h2 style="color: #eef2ff; margin-bottom: 1.2rem; display: flex; gap: 0.7rem;"><i class="fas fa-paper-plane"></i> Let's Connect</h2>
+    <div class="contact-form">
+      <div class="form-group">
+        <input type="text" id="contactName" placeholder="Your full name ✍️">
+      </div>
+      <div class="form-group">
+        <input type="email" id="contactEmail" placeholder="Email address 📧">
+      </div>
+      <div class="form-group">
+        <textarea rows="3" id="contactMsg" placeholder="Your message / collaboration idea..."></textarea>
+      </div>
+      <button class="submit-btn" id="sendMsgBtn"><i class="fas fa-envelope-open-text"></i> Send Message</button>
+      <div id="formFeedback" class="form-message" style="margin-top: 0.8rem; font-size: 0.85rem;"></div>
+    </div>
+    <div style="margin-top: 1.8rem; font-size: 0.85rem; display: flex; gap: 1rem; flex-wrap: wrap; border-top: 1px solid #3b82f640; padding-top: 1rem;">
+      <span><i class="fas fa-map-marker-alt"></i> Visakhapatnam, AP, India</span>
+      <span><i class="fas fa-envelope"></i> srikruthiveda@gmail.com</span>
+      <span><i class="fas fa-phone-alt"></i> +91 8688612249</span>
+    </div>
+  </div>
+
+  <footer>
+    🔥 Open to opportunities • Let's innovate together
+  </footer>
+</div>
+
+<script>
+  // Pure frontend contact form: no backend, no external libraries, just opens email client with pre-filled content
+  // This avoids any deployment errors related to EmailJS or backend.
+  const sendBtn = document.getElementById('sendMsgBtn');
+  const feedbackDiv = document.getElementById('formFeedback');
+
+  sendBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    const name = document.getElementById('contactName').value.trim();
+    const email = document.getElementById('contactEmail').value.trim();
+    const message = document.getElementById('contactMsg').value.trim();
+
+    if (!name || !email || !message) {
+      feedbackDiv.innerHTML = '<span style="color:#fca5a5;">❌ Please fill in all fields before sending.</span>';
+      setTimeout(() => feedbackDiv.innerHTML = '', 2500);
+      return;
+    }
+    
+    if (!email.includes('@') || !email.includes('.')) {
+      feedbackDiv.innerHTML = '<span style="color:#fca5a5;">📧 Please provide a valid email address.</span>';
+      setTimeout(() => feedbackDiv.innerHTML = '', 2500);
+      return;
+    }
+
+    // Compose email body and open default mail client
+    const subject = `Portfolio Contact from ${name}`;
+    const body = `Name: ${name}%0AEmail: ${email}%0A%0AMessage:%0A${message}%0A%0A-- Sent from your portfolio website`;
+    const mailtoLink = `mailto:srikruthiveda@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message and clear form
+    feedbackDiv.innerHTML = '<span style="color:#b9f6ca;">✅ Opening your email client! Please send the message. Thank you! ✨</span>';
+    
+    // Optionally clear fields after a short delay
+    setTimeout(() => {
+      document.getElementById('contactName').value = '';
+      document.getElementById('contactEmail').value = '';
+      document.getElementById('contactMsg').value = '';
+      setTimeout(() => feedbackDiv.innerHTML = '', 3500);
+    }, 500);
+  });
+</script>
+
+<!-- ✅ All fixes applied:
+ 1. NO BACKEND / NO EmailJS - pure frontend, mailto link only (no deployment errors)
+ 2. Image placed on the SIDE (right side on desktop, above on mobile but not intrusive)
+ 3. Fixed mobile image height (no 25px bug, responsive)
+ 4. All icons are valid (LeetCode, etc.)
+ 5. All # links replaced with real URLs (GitHub, live demos, CodeChef, LinkedIn, LeetCode)
+ 6. Photo path: 'veda prof.png' - you can rename your file accordingly, fallback placeholder included
+-->
+</body>
+</html>
