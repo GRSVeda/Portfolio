@@ -424,3 +424,8 @@
   .contact-grid { grid-template-columns: 1fr; }
   .input-row { grid-template-columns: 1fr; }
 }
+img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
