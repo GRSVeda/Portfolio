@@ -28,4 +28,4 @@ Check out my live portfolio here: **[Pettu Nee Netlify/GitHub Pages Link Ikkada]
 ├── index.html      # Main structure and content
 ├── style.css       # Custom Glassmorphic styling
 ├── script.js      # Form validation & API handling logic
-└── veda_prof.png   # Profile identity
+└── veda.png   # Profile identity
